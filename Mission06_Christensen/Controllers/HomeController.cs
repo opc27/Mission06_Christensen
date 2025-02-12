@@ -22,4 +22,10 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    [HttpGet]
+    public IActionResult EnterMovies()
+    {
+        return View();
+    }
 }

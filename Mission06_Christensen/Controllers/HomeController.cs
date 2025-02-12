@@ -1,16 +1,17 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-//using Mission06_Christensen.Models;
+
+using Mission06_Christensen.Models;
 
 namespace Mission06_Christensen.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private EnterMoviesContext _context;
+    
+    public HomeController(EnterMoviesContext temp) // constructor
     {
-        _logger = logger;
+        _context = temp;
     }
 
     public IActionResult Index()
@@ -27,5 +28,14 @@ public class HomeController : Controller
     public IActionResult EnterMovies()
     {
         return View();
+    }
+    
+    [HttpPost]
+    public IActionResult EnterMovies(Movie response)
+    {
+        _context.Movies.Add(response); // add record to database
+        _context.SaveChanges();
+        
+        return View("Confirmation", response); 
     }
 }

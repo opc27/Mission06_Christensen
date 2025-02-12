@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Mission06_Christensen.Models;
 
-public class NewMovie
+public class Movie
 {
     [Key]
     [Required]

@@ -1,12 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Mission06_Christensen.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// builder.Services.AddDbContext<DatingApplicationContext>(options =>
-// {
-//     options.UseSqlite(builder.Configuration["ConnectionStrings:DatingConnection"]);
-// });
+builder.Services.AddDbContext<EnterMoviesContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:MovieConnection"]);
+});
 
 var app = builder.Build();
 

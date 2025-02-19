@@ -15,19 +15,20 @@ public class HomeController : Controller
         _context = temp;
     }
 
-    public IActionResult Index()
+    public IActionResult Index() // main page
     {
         return View();
     }
 
-    public IActionResult GetToKnow()
+    public IActionResult GetToKnow() // get to know you page
     {
         return View();
     }
 
     [HttpGet]
-    public IActionResult EnterMovies()
+    public IActionResult EnterMovies() // enter the movies
     {
+        // view bag for categories
         ViewBag.Categories = _context.Categories
             .OrderBy(x => x.CategoryName)
             .ToList();
@@ -36,7 +37,7 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult EnterMovies(Movie response)
+    public IActionResult EnterMovies(Movie response) // save changes to databse
     {
         if (ModelState.IsValid)
         {
@@ -56,7 +57,7 @@ public class HomeController : Controller
         
     }
     
-    public IActionResult ListOfMovies()
+    public IActionResult ListOfMovies() // list of the movies in database
     {
         // linq
         var movies = _context.Movies
@@ -66,7 +67,7 @@ public class HomeController : Controller
     }
     
     [HttpGet]
-    public IActionResult Edit(int movieid)
+    public IActionResult Edit(int movieid) // pull the movie for the movie that we're editing
     {
         var recordToEdit = _context.Movies
             .Single(x => x.MovieId == movieid);
@@ -79,7 +80,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Edit(Movie updatedInfo)
+    public IActionResult Edit(Movie updatedInfo) // save edited movie
     {
         _context.Movies.Update(updatedInfo);
         _context.SaveChanges();
@@ -88,7 +89,7 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult Delete(int movieid)
+    public IActionResult Delete(int movieid) // delete movie
     {
         var recordToDelete = _context.Movies
             .Single(x => x.MovieId == movieid);
@@ -97,7 +98,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Delete(Movie movie)
+    public IActionResult Delete(Movie movie) // save changes to database
     {
         _context.Movies.Remove(movie);
         _context.SaveChanges();

@@ -1,5 +1,7 @@
 @model Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<Movie, Category?>
 
+<!--Table for movies-->
+
 <table class="table table-bordered">
     <thead class="fw-bold">
     <tr>
@@ -22,7 +24,7 @@
         <tbody>
         <tr>
             <td>@x.MovieId</td>
-            <td>@x.Category.CategoryName</td>
+            <td>@x.Category.CategoryName</td> <!--pull from category table -->
             <td>@x.Title</td>
             <td>@x.Year</td>
             <td>@x.Director</td>

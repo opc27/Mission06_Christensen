@@ -13,6 +13,7 @@ public class EnterMoviesContext : DbContext
     
     public DbSet<Category> Categories { get; set; }
 
+    // add category table 
     protected override void OnModelCreating(ModelBuilder modelBuilder) // seed data
     {
         modelBuilder.Entity<Category>().HasData(

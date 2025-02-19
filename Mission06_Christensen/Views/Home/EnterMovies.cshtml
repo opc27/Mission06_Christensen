@@ -8,6 +8,7 @@
         <input type="hidden" asp-for="MovieId"/>
         
         <select asp-for="CategoryId">
+            <!--pull from view bag-->
             <option value="">Select a Category</option>
             @foreach (Category c in ViewBag.Categories)
             {

@@ -16,7 +16,7 @@ public class Movie
     [Required]
     public string Title { get; set; }
     [Required]
-    [Range(1888, int.MaxValue)]
+    [Range(1888, int.MaxValue)] // only allow from 1888
     public int Year { get; set; }
     public string? Director { get; set; }
     public string? Rating { get; set; }
